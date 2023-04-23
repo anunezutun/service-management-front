@@ -1,4 +1,4 @@
-import { useNavigate, Form, redirect } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import { FaRegCopy, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { useState } from "react";
@@ -72,11 +72,10 @@ function ListCustomerTable({ customer }) {
         <button
           type="button"
           className="text-blue-600 hover:text-blue-700 font-bold text-xs"
-          onClick={() => navigate(`/clientes/detalle/${guid}`)}
+          onClick={() => navigate('/cliente/detalle', {state:{customerGuid:customer.guid}})}
         >
           Ver Detalles
         </button>
-
       </td>
     </tr>
   )

@@ -1,6 +1,7 @@
 import React from 'react'
-import { Form, redirect, useLoaderData } from "react-router-dom"
+import { Form, redirect, useLoaderData, useActionData } from "react-router-dom"
 import { getUser, updateUser } from "../../data/UserOperations";
+import Error from "../../components/Error";
 
 export async function loader({ params }) {
 
@@ -24,6 +25,23 @@ export async function action({ request, params }) {
   const fields = Object.fromEntries(formData)
   fields.guid = params.userGuid;
 
+  const names = fields.names
+  const password = fields.password
+  const errores = []
+
+  //Inicio validación de campos obligatorios
+  if (names === '') {
+    errores.push('Debes ingresar el nombre del cliente.')
+  }
+  if (password === '') {
+    errores.push('La contraseña no debe estar vacía.')
+  }
+  //Fin validación de campos obligatorios
+
+  if (Object.keys(errores).length) {
+    return errores
+  }
+
   const requestBody = {
     data: fields
   };
@@ -40,11 +58,13 @@ export async function action({ request, params }) {
 
 function EditUser() {
   const user = useLoaderData()
-  
+  const errores = useActionData()
+
   return (
     <>
       <div className="p-6 bg-white rounded-lg shadow">
         <h3 className="font-bold uppercase mb-2">editar usuario</h3>
+        {errores?.length && errores.map((error, i) => <Error key={i}>{error}</Error>)}
 
         <Form
           method="post"

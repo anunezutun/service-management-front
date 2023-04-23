@@ -9,6 +9,8 @@ import ListUser, { loader as listUserLoader } from './pages/user/ListUser'
 import EditUser, { loader as editUserLoader, action as editUserAction } from './pages/user/EditUser'
 import RegisterCustomer, { loader as registerCustomLoader, action as registerCustomerAction } from './pages/customer/RegisterCustomer'
 import ListCustomer, { loader as listCustomerLoader} from './pages/customer/ListCustomer'
+import DetailCustomer, { loader as detailCustomerLoader } from './pages/customer/DetailCustomer'
+import EditCustomer, { loader as editCustomLoader, action as editCustomerAction} from './pages/customer/EditCustomer'
 
 const router = createBrowserRouter([
   {
@@ -47,8 +49,18 @@ const router = createBrowserRouter([
         path: '/cliente/listar',
         element: <ListCustomer />,
         loader: listCustomerLoader,
-        //action: registerCustomerAction,
-      }
+      },
+      {
+        path: '/cliente/detalle',
+        element: <DetailCustomer />,
+        loader: detailCustomerLoader,
+      },
+      {
+        path: '/cliente/editar/:customerGuid',
+        element: <EditCustomer />,
+        loader: editCustomLoader,
+        action: editCustomerAction,
+      },
     ]
   }
 ])
