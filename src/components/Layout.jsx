@@ -32,6 +32,13 @@ function Layout() {
           >
             Listado de Clientes
           </Link>
+          <Link
+            to="/notificacion/registrar"
+            className={`${location.pathname === '/notificacion/registrar' ? 'text-yellow-300' : 'text-white'} block mt-2 hover:text-yellow-300`}
+          >
+            Registrar notificación
+          </Link>
+
         </nav>
       </aside>
       <div className='md:w-4/5 p-10 md:h-screen overflow-scroll'>

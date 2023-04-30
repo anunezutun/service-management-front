@@ -11,6 +11,7 @@ import RegisterCustomer, { loader as registerCustomLoader, action as registerCus
 import ListCustomer, { loader as listCustomerLoader} from './pages/customer/ListCustomer'
 import DetailCustomer, { loader as detailCustomerLoader } from './pages/customer/DetailCustomer'
 import EditCustomer, { loader as editCustomLoader, action as editCustomerAction} from './pages/customer/EditCustomer'
+import RegisterNotification, {action as registerNotificationAction } from './pages/notification/RegisterNotification'
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
         element: <EditCustomer />,
         loader: editCustomLoader,
         action: editCustomerAction,
+      },{
+        path: '/notificacion/registrar',
+        element: <RegisterNotification />,
+        action: registerNotificationAction,
       },
     ]
   }
