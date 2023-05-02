@@ -1,5 +1,5 @@
 export async function saveNotification(request) {
-  
+
   try {
     const response = await fetch(import.meta.env.VITE_API_NOTIFICATIONS_URL, {
       method: 'POST',
@@ -12,4 +12,13 @@ export async function saveNotification(request) {
   } catch (error) {
     console.log(error);
   }
+}
+
+export async function listNotifications(guid) {
+
+  const response = await fetch(`${import.meta.env.VITE_API_NOTIFICATIONS_URL}?` + new URLSearchParams({
+    userGuid: guid
+  }))
+  return await response.json()
+
 }

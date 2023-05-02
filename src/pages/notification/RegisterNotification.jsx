@@ -1,6 +1,6 @@
 import { useNavigate, Form, useActionData, redirect } from "react-router-dom"
 import Error from "../../components/Error";
-import { saveNotification } from "../../data/NotificationOperations"; 
+import { saveNotification } from "../../data/NotificationOperations";
 
 export function loader() {
   const userGuid = localStorage.getItem('userGuid')
@@ -55,7 +55,7 @@ export async function action({ request }) {
   const code = response.code;
 
   if (code === "A241") {
-    return redirect('/')
+    return redirect('/notificacion/listar')
   }
 
 }
@@ -91,6 +91,19 @@ function RegisterNotification() {
         <div className="flex flex-wrap mb-3">
 
           <div className="w-full md:w-1/3">
+            <label
+              className="text-gray-800"
+              htmlFor="date"
+            >Fecha:</label>
+            <input
+              id="date"
+              type="date"
+              className="mt-2 block w-full p-3 bg-gray-50"
+              name="date"
+            />
+          </div>
+
+          <div className="w-full md:w-1/3 pl-3">
             <label
               className="text-gray-800"
               htmlFor="hour"
@@ -135,23 +148,10 @@ function RegisterNotification() {
             </select>
           </div>
 
-          <div className="w-full md:w-1/3 pl-3">
-            <label
-              className="text-gray-800"
-              htmlFor="date"
-            >Fecha:</label>
-            <input
-              id="date"
-              type="date"
-              className="mt-2 block w-full p-3 bg-gray-50"
-              name="date"
-            />
-          </div>
-
         </div>
 
         <div className="flex flex-wrap mb-3">
-          
+
 
           <div className="w-full md:w-1/3">
             <label

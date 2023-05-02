@@ -38,6 +38,12 @@ function Layout() {
           >
             Registrar notificación
           </Link>
+          <Link
+            to="/notificacion/listar"
+            className={`${location.pathname === '/notificacion/listar' ? 'text-yellow-300' : 'text-white'} block mt-2 hover:text-yellow-300`}
+          >
+            Listado de Notificaciones
+          </Link>
 
         </nav>
       </aside>
