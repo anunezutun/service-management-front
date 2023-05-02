@@ -32,7 +32,6 @@ function ListCustomerTable({ customer }) {
           </div>
         </div>
 
-
         <div className='flex'>
           <p className="text-gray-600">
             <span className='text-gray-800 font-bold'>Clave Sol: </span>
